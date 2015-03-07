@@ -10,3 +10,4 @@ insecure
 twbs:bootstrap
 iron:router
 jquery
+fortawesome:fontawesome
