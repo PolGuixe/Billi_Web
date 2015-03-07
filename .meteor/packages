@@ -11,3 +11,5 @@ twbs:bootstrap
 iron:router
 udondan:slick
 jquery-waypoints
+jquery
+mrt:modernizr-meteor
