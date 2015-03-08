@@ -12,4 +12,5 @@ iron:router
 jquery
 fortawesome:fontawesome
 aldeed:tabular
-chhib:morris
+rafaelhdr:google-charts
+maazalik:highcharts
