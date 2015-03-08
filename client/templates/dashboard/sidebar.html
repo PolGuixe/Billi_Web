@@ -1,0 +1,39 @@
+<template name="sidebar">
+  <!-- Sidebar -->
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-default sidebar" role="navigation">
+      <div class="sidebar-nav navbar-collapse">
+        <ul class="nav" id="side-menu">
+          <li class="sidebar-search">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Search...">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+            <!-- /input-group -->
+          </li>
+          <li>
+            <a href="{{pathFor 'dashboard'}}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+          </li>
+          <li>
+            <a href="{{pathFor 'receipts'}}"><i class="fa fa-database fa-fw"></i> Receipts</a>
+          </li>
+          <li>
+            <a href="{{pathFor 'reports'}}"><i class="fa fa-file-text-o fa-fw"></i> Reports</a>
+          </li>
+          <li>
+            <a href="{{pathFor 'statistics'}}"><i class="fa fa-bar-chart-o fa-fw"></i> Statistics</a>
+          </li>
+          <li>
+            <a href="{{pathFor 'settings'}}"><i class="fa fa-gear fa-fw"></i> Settings</a>
+          </li>
+        </ul>
+      </div>
+      <!-- /.sidebar-collapse -->
+    </div>
+    <!-- /.navbar-static-side -->
+  </nav>
+</template>

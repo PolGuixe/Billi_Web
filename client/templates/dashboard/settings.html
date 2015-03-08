@@ -1,0 +1,40 @@
+<template name="settings">
+  
+  {{> sidebar}}
+  
+  <div id="page-wrapper">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">Settings</h1>
+      </div>
+      <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+      <div class="col-lg-12">
+        <div role="tabpanel">
+
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-user fa-fw"></i> Profile</a></li>
+            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-list fa-fw"></i> Categories</a></li>
+            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-download fa-fw"></i> Import settings</a></li>
+            <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"><i class="fa fa-upload fa-fw"></i> Export settings</a></li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">...</div>
+            <div role="tabpanel" class="tab-pane" id="profile">...</div>
+            <div role="tabpanel" class="tab-pane" id="messages">...</div>
+            <div role="tabpanel" class="tab-pane" id="settings">...</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /#page-wrapper -->
+
+</template>
