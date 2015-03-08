@@ -240,5 +240,5 @@ function builtPie() {
 Template.dashboard.rendered = function() {    
     builtArea();
     builtColumn(); 
-     builtPie();
+    builtPie();
 }
