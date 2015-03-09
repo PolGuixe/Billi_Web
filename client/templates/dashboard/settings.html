@@ -16,18 +16,180 @@
 
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-user fa-fw"></i> Profile</a></li>
-            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-list fa-fw"></i> Categories</a></li>
-            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-download fa-fw"></i> Import settings</a></li>
-            <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"><i class="fa fa-upload fa-fw"></i> Export settings</a></li>
+            <li role="presentation" class="active"><a href="#profile" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-user fa-fw"></i> Profile</a></li>
+            <li role="presentation"><a href="#categories" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-list fa-fw"></i> Categories</a></li>
+            <li role="presentation"><a href="#import" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-download fa-fw"></i> Import settings</a></li>
+            <li role="presentation"><a href="#export" aria-controls="settings" role="tab" data-toggle="tab"><i class="fa fa-upload fa-fw"></i> Export settings</a></li>
           </ul>
 
           <!-- Tab panes -->
           <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="home">...</div>
-            <div role="tabpanel" class="tab-pane" id="profile">...</div>
-            <div role="tabpanel" class="tab-pane" id="messages">...</div>
-            <div role="tabpanel" class="tab-pane" id="settings">...</div>
+            <div role="tabpanel" class="tab-pane active" id="profile">
+              <!-- <div class="row">
+                  <div class="col-lg-12 text-center">
+                      <h2 class="section-heading">Contact Us</h2>
+                      <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                  </div>
+              </div>
+              -->
+              <div class="row">
+                  <div class="col-lg-12">
+                      <form name="userProfile" id="userProfileForm" novalidate>
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
+                                      <p class="help-block text-danger"></p>
+                                  </div>
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" placeholder="Surname" id="surname" required data-validation-required-message="Please enter your surname.">
+                                      <p class="help-block text-danger"></p>
+                                  </div>
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" placeholder="NIF" id="NIF" required data-validation-required-message="Please enter your NIF.">
+                                      <p class="help-block text-danger"></p>
+                                  </div>
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" placeholder="Organization" id="organization" required data-validation-required-message="Please enter the name of your Organization.">
+                                      <p class="help-block text-danger"></p>
+                                  </div>
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" placeholder="Department" id="department" required data-validation-required-message="Please enter the name of your Department.">
+                                      <p class="help-block text-danger"></p>
+                                  </div>
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" placeholder="Position" id="position" required data-validation-required-message="Please enter the name of your Position.">
+                                      <p class="help-block text-danger"></p>
+                                  </div>
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" placeholder="Phone number" id="organization" required data-validation-required-message="Please enter your phone number.">
+                                      <p class="help-block text-danger"></p>
+                                  </div>
+                                
+                                  <div class="clearfix"></div>
+                                  <div class="col-lg-12 text-center">
+                                      <div id="success"></div>
+                                      <button type="submit" class="btn btn-xl">Submit Message</button>
+                                  </div>
+                                </div>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="categories">...
+              <div class="row">
+                  <div class="col-lg-12">
+                      
+                      <!-- Meals -->
+                      <div class="row">
+                          <div class="col-md-6">
+                            <span class="fa-stack fa-2x">
+                                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                                <i class="fa fa-cutlery fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <h4 class="service-heading"> Meals</h4>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="bt-group" data-toggle="buttons">
+                                <label class="btn btn-primary active">
+                                <input type="radio" name="meals" id="on" autocomplete="off" checked> ON </label>
+                                <label class="btn btn-primary">
+                                <input type="radio" name="meals" id="off" autocomplete="off"> OFF </label>
+                            </div>
+                          </div>
+                      </div>
+                      <!-- /Meals -->
+                    
+                      <!-- Breakfast -->
+                      <div class="row">
+                          <div class="col-md-6">
+                            <span class="fa-stack fa-2x">
+                                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                                <i class="fa fa-cutlery fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <h4 class="service-heading"> Breakfast</h4>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="bt-group" data-toggle="buttons">
+                                <label class="btn btn-primary">
+                                <input type="radio" name="breakfast" id="on" autocomplete="off"> ON </label>
+                                <label class="btn btn-primary active">
+                                <input type="radio" name="breakfast" id="off" autocomplete="off" checked> OFF </label>
+                            </div>
+                          </div>
+                      </div>
+                      <!-- /Breakfast -->
+                    
+                      <!-- Lunch -->
+                      <div class="row">
+                          <div class="col-md-6">
+                            <span class="fa-stack fa-2x">
+                                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                                <i class="fa fa-cutlery fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <h4 class="service-heading"> Lunch</h4>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="bt-group" data-toggle="buttons">
+                                <label class="btn btn-primary">
+                                <input type="radio" name="lunch" id="on" autocomplete="off"> ON </label>
+                                <label class="btn btn-primary active">
+                                <input type="radio" name="lunch" id="off" autocomplete="off" checked> OFF </label>
+                            </div>
+                          </div>
+                      </div>
+                      <!-- /Lunch -->
+                    
+                      <!-- Dinner -->
+                      <div class="row">
+                          <div class="col-md-6">
+                            <span class="fa-stack fa-2x">
+                                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                                <i class="fa fa-cutlery fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <h4 class="service-heading"> Dinner</h4>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="bt-group" data-toggle="buttons">
+                                <label class="btn btn-primary">
+                                <input type="radio" name="dinner" id="on" autocomplete="off"> ON </label>
+                                <label class="btn btn-primary active">
+                                <input type="radio" name="dinner" id="off" autocomplete="off" checked> OFF </label>
+                            </div>
+                          </div>
+                      </div>
+                      <!-- /Dinner -->
+                    
+                      <!-- Dinner -->
+                      <div class="row">
+                          <div class="col-md-6">
+                            <span class="fa-stack fa-2x">
+                                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                                <i class="fa fa-cutlery fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <h4 class="service-heading"> Dinner</h4>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="bt-group" data-toggle="buttons">
+                                <label class="btn btn-primary">
+                                <input type="radio" name="dinner" id="on" autocomplete="off"> ON </label>
+                                <label class="btn btn-primary active">
+                                <input type="radio" name="dinner" id="off" autocomplete="off" checked> OFF </label>
+                            </div>
+                          </div>
+                      </div>
+                      <!-- /Dinner -->
+                    
+                    
+                </div>
+              </div>
+              
+              <!-- Add Save Changes -->
+
+            </div>
+            <div role="tabpanel" class="tab-pane" id="import">...</div>
+            <div role="tabpanel" class="tab-pane" id="export">...</div>
           </div>
 
         </div>
