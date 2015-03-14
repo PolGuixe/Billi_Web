@@ -66,7 +66,7 @@ if (Expenses.find().count() === 0) {
       paymentMethod: 'Card' // se puede con card o cash
     });
     
-    expense.image = 
+//    expense.image = 
 
     Expenses.insert(expense);
   }

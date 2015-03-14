@@ -1,5 +1,13 @@
 {
   "dependencies": {
+    "node-tesseract": {
+      "version": "0.2.6",
+      "dependencies": {
+        "node-uuid": {
+          "version": "1.4.3"
+        }
+      }
+    },
     "wkhtmltopdf": {
       "version": "0.1.5",
       "dependencies": {

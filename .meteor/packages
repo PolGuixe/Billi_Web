@@ -19,3 +19,6 @@ npm-container
 tsega:bootstrap3-datetimepicker
 useraccounts:bootstrap
 accounts-password
+aldeed:autoform
+aldeed:collection2
+momentjs:moment
