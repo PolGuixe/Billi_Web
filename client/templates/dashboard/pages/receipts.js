@@ -84,12 +84,22 @@ saveReceiptsFile = function(name) {
   a.click();
 }
  
-Blaze.saveAsPDF(Template.receipts, {
+
+
+/*
+var doc = new jsPDF();
+doc.text(20, 20, 'Hello world!');
+doc.text(20, 30, 'This is client-side Javascript, pumping out a PDF.');
+doc.addPage('a6','l');
+doc.text(20, 20, 'Do you like that?');
+
+Blaze.saveAsPDF(Template.reports, {
   filename: "report.pdf", // optional, default is "document.pdf"
-  data: "Hello, World!", // optional, render the template with this data context
+  //data: doc, // optional, render the template with this data context
   x: 0, // optional, left starting position on resulting PDF, default is 4 units
   y: 0, // optional, top starting position on resulting PDF, default is 4 units
   orientation: "landscape", // optional, "landscape" or "portrait" (default)
   unit: "in", // optional, unit for coordinates, one of "pt", "mm" (default), "cm", or "in"
   format: "letter" // optional, see Page Formats, default is "a4"
 });
+*/
