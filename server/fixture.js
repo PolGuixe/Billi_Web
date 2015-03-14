@@ -33,7 +33,7 @@ if (Expenses.find().count() === 0) {
 
     var loc = parseInt(Math.random() * (locationNames.length - 1));
     expense.location = locationNames[loc];
-    expense.date = moment(now).utc().subtract(parseInt(Math.random() * days * 24 * 60), 'minutes').format();
+    expense.date = moment(now).utc().subtract(parseInt(Math.random() * days * 24 * 60), 'minutes').toDate();
     expense.amount = {};
 
     if (i < N * 0.6) {
