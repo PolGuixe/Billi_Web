@@ -1,3 +1,41 @@
+// datepicker
+Template.datepicker.rendered = function() {
+    $('.datetimepicker').datetimepicker();
+}
+
+// receipts
+/*
+TabularTables = {};
+Books = new Mongo.Collection("books");
+
+Meteor.isClient && Template.registerHelper('TabularTables', TabularTables);
+
+TabularTables.Books = new Tabular.Table({
+  name: "BookList",
+  //collection: Books,
+  columns: [
+    {data: "title", title: "Title"},
+    {data: "author", title: "Author"},
+    {data: "copies", title: "Copies Available"},
+    {
+      data: "lastCheckedOut",
+      title: "Last Checkout",
+      render: function (val, type, doc) {
+        if (val instanceof Date) {
+          return moment(val).calendar();
+        } else {
+          return "Never";
+        }
+      }
+    },
+    {data: "summary", title: "Summary"},
+    {
+      tmpl: Meteor.isClient && Template.bookCheckOutCell
+    }
+  ]
+});
+*/
+
 Template.receipts.events = {
    'click #btnExportReceiptsCSV' : function () {
      saveReceiptsFile('-Billi-My-receipts.csv');
@@ -41,7 +79,7 @@ saveReceiptsFile = function(name) {
     mm=mm.toString();
   }
 
-  var fileName = yyyy.toString()+dd+mm+name;
+  var fileName = yyyy.toString()+mm+dd+name;
   a.setAttribute("download", fileName);
   a.click();
 }

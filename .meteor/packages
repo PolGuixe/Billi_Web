@@ -11,13 +11,11 @@ iron:router
 jquery
 fortawesome:fontawesome
 aldeed:tabular
-rafaelhdr:google-charts
 maazalik:highcharts
-accounts-base
-accounts-ui
-pascoual:pdfkit
-ongoworks:pdf
 meteorhacks:npm
 
 
 npm-container
+tsega:bootstrap3-datetimepicker
+useraccounts:bootstrap
+accounts-password
