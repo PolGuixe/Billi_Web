@@ -11,7 +11,7 @@ Template.addReceipt.helpers({
       if (values)
         trueFields.push(keys);
     });
-    console.log("trueFields: ", trueFields);
+    
     return trueFields;
   },
   categories: function () {
@@ -29,7 +29,6 @@ Template.addReceipt.helpers({
           label: keys.charAt(0).toUpperCase() + keys.substring(1)
         });
     });
-    console.log("trueCategories: ", trueCategories);
     
     return trueCategories;
   },

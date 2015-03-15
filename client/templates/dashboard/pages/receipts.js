@@ -4,19 +4,36 @@ Template.datepicker.rendered = function() {
 }
 
 // receipts
-/*
-TabularTables = {};
-Books = new Mongo.Collection("books");
+Template.receipts.helpers({
+  Expenses: function () {
+    return Expenses;
+  },
+  settings: function () {
+    return {
+      fields: [
+        { key: 'date', label: 'Date' },
+        { key: 'category', label: 'Category' },
+        { key: 'location', label: 'Location' },
+        { key: 'amount.number', label: 'Amount' },
+        { key: 'amount.currency', label: 'Currency' }
+      ]
+    };
+  }
+});
 
-Meteor.isClient && Template.registerHelper('TabularTables', TabularTables);
+/*TabularTables = {};
 
-TabularTables.Books = new Tabular.Table({
-  name: "BookList",
-  //collection: Books,
+//Meteor.isClient && Template.registerHelper('TabularTables', TabularTables);
+
+TabularTables.Expenses = new Tabular.Table({
+  name: "ExpenseList",
+  //collection: Expense,
   columns: [
-    {data: "title", title: "Title"},
-    {data: "author", title: "Author"},
-    {data: "copies", title: "Copies Available"},
+    {data: "date", title: "Date"},
+    {data: "category", title: "Category"},
+    {data: "location", title: "Location"},
+    {data: "amount.number", title: "Amount"},
+    {data: "amount.currency", title: "Currency"}
     {
       data: "lastCheckedOut",
       title: "Last Checkout",
@@ -28,7 +45,6 @@ TabularTables.Books = new Tabular.Table({
         }
       }
     },
-    {data: "summary", title: "Summary"},
     {
       tmpl: Meteor.isClient && Template.bookCheckOutCell
     }
