@@ -1,0 +1,41 @@
+<template name="addReceipt">
+  <div id="page-wrapper">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">Add New Receipt</h1>
+      </div>
+      <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    
+    <div class="row">
+      <div class="col-lg-12">
+        <h4>Add new receipt</h4>
+          {{#autoForm collection="Expenses" id="expense-new-form" type="insert"}}
+
+            {{#each field}}
+              {{#if isCategory this}}
+                {{> afQuickField name=this options=categories}}
+              {{else}}
+                {{#if isDate this}}
+                  {{> afFieldInput name=this type="datetime-local" value=date}}
+                  {{else}}
+                    {{#if isLocation this}}
+                      {{> afQuickField name=this value=location}}
+                      {{else}}
+                        {{> afQuickField name=this}}
+                    {{/if}}
+                {{/if}}
+              {{/if}}
+            {{/each}}
+
+          <div class="padding">
+            <button type="submit" class="button button-positive button-block">Save Expense</button>
+          </div>
+        {{/autoForm}}
+      </div>
+      <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+  </div>
+</template>
