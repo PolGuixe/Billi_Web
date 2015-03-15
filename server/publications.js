@@ -1,7 +1,7 @@
-Meteor.publish('expenses',function(user){
-  return Expenses.find({createdBy: user});
+Meteor.publish('expenses',function(){
+  return Expenses.find({createdBy: this.userId});
 });
 
-Meteor.publish('userSettings',function(user){
-  return UserSettings.find({belongsTo: user});
+Meteor.publish('userSettings',function(){
+  return UserSettings.find({belongsTo: this.userId});
 });

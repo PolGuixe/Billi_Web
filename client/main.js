@@ -1,3 +1,3 @@
-Meteor.subscribe('expenses', Meteor.userId()); //Add them to specific routes
+Meteor.subscribe('expenses'); //Add them to specific routes
 
-Meteor.subscribe('userSettings', Meteor.userId());
+Meteor.subscribe('userSettings');
