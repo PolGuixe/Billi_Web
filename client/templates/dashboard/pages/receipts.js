@@ -21,37 +21,6 @@ Template.receipts.helpers({
   }
 });
 
-/*TabularTables = {};
-
-//Meteor.isClient && Template.registerHelper('TabularTables', TabularTables);
-
-TabularTables.Expenses = new Tabular.Table({
-  name: "ExpenseList",
-  //collection: Expense,
-  columns: [
-    {data: "date", title: "Date"},
-    {data: "category", title: "Category"},
-    {data: "location", title: "Location"},
-    {data: "amount.number", title: "Amount"},
-    {data: "amount.currency", title: "Currency"}
-    {
-      data: "lastCheckedOut",
-      title: "Last Checkout",
-      render: function (val, type, doc) {
-        if (val instanceof Date) {
-          return moment(val).calendar();
-        } else {
-          return "Never";
-        }
-      }
-    },
-    {
-      tmpl: Meteor.isClient && Template.bookCheckOutCell
-    }
-  ]
-});
-*/
-
 Template.receipts.events = {
    'click #btnExportReceiptsCSV' : function () {
      saveReceiptsFile('-Billi-My-receipts.csv');
@@ -64,7 +33,11 @@ Template.receipts.events = {
  
 saveReceiptsFile = function(name) {
   // Data array - to change
-   var data = [["name1", "city1", "some other info"], ["name2", "city2", "more info"]];
+  var data = [["Date", "Location", "Category", "Amount", "Currency"]];
+  var N = Expenses.find().count();
+  for (var i = 0; i < N; i++){
+    data.push([Expenses.find().fetch()[i].date, Expenses.find().fetch()[i].location, Expenses.find().fetch()[i].category, Expenses.find().fetch()[i].amount.number, Expenses.find().fetch()[i].amount.currency]);
+  }
 
   // Algorithm to create .csv file content
   var csvContent = "data:text/csv;charset=utf-8,";
