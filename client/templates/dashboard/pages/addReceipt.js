@@ -1,7 +1,7 @@
 Template.addReceipt.helpers({
   field: function () {
     var allFields = UserSettings.findOne({
-      belongsTo: Meteor.uesrId()
+      belongsTo: Meteor.userId()
     });
     var trueFields = [];
 
@@ -16,7 +16,7 @@ Template.addReceipt.helpers({
   },
   categories: function () {
     var allCategories = UserSettings.findOne({
-      belongsTo: Meteor.uesrId()
+      belongsTo: Meteor.userId()
     });
     allCategories = allCategories.expenseCategories;
 

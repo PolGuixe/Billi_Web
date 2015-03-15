@@ -4,7 +4,7 @@ Template.settings.helpers({
   },
   userId: function() {
     return UserSettings.findOne({
-      belongsTo: Meteor.uesrId()
+      belongsTo: Meteor.userId()
     });
   }
 })
