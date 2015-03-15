@@ -175,8 +175,11 @@ function builtColumn() {
 function builtPie() {
     
     // 'external' data
+    var data = aggregateExpensesByCategory();
+    console.log(data);
+    /*
     var data = new Array();
-
+  
     data.push({
         name: 'Level 0',
         y: 10,
@@ -194,7 +197,7 @@ function builtPie() {
         y: 30,
         color: '#DF5353'
     });
-
+    */
     $('#container-pie').highcharts({
         
         chart: {
@@ -212,7 +215,10 @@ function builtPie() {
         },
         
         tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            /*formatter: function () {
+                return this.series.name + ': <b>' + this.y + '</b><br/>{point.percentage:.1f}%';
+            }*/
+            pointFormat: '{series.name}: {point.percentage:.1f}%' //<b>{point.y:.2f}%</b><br>
         },
         
         plotOptions: {
@@ -228,7 +234,7 @@ function builtPie() {
         
         series: [{
             type: 'pie',
-            name: 'Anteil',
+            name: 'Total',
             data: data
         }]
     });
@@ -242,3 +248,68 @@ Template.dashboard.rendered = function() {
     builtColumn(); 
     builtPie();
 }
+
+Template.dashboard.helpers({
+  Expenses: function () {
+    return Expenses;
+  }
+});
+
+function capitalizeFirstLetter(string) {
+   return string.charAt(0).toUpperCase() + string.slice(1);
+}
+function aggregateExpensesByCategory() {
+  
+  var nCategories = _.uniq(Expenses.find({}, {sort: {category: 1}, fields: {category: true}}).fetch().map(function(x) {return x.category;}), true);
+  
+  var agregatedExpenses = [];
+  /*
+  for (var i = 0; i < nCategories.length; i++) {
+    agregatedExpenses.push([capitalizeFirstLetter(nCategories[i]), 0]);
+  }*/
+  console.log("nCategories: ", nCategories)
+  console.log("agregatedExpenses: ", agregatedExpenses)
+  
+  agregatedExpenses.push(['Meals', 0]);
+  agregatedExpenses.push(['Breakfast', 0]);
+  agregatedExpenses.push(['Lunch', 0]);
+  agregatedExpenses.push(['Dinner', 0]);
+  agregatedExpenses.push(['Trips', 0]);
+  agregatedExpenses.push(['Fuel', 0]);
+    
+  for (i = 0; i < Expenses.find().count(); i++) {
+    switch(Expenses.find().fetch()[i].category) {
+    case 'meals':
+        agregatedExpenses[0][1] = agregatedExpenses[0][1] + Expenses.find().fetch()[i].amount.number;
+        break;
+    case 'breakfast':
+        agregatedExpenses[1][1] = agregatedExpenses[1][1] + Expenses.find().fetch()[i].amount.number;
+        break;
+    case 'lunch':
+        agregatedExpenses[2][1] = agregatedExpenses[2][1] + Expenses.find().fetch()[i].amount.number;
+        break;
+    case 'dinner':
+        agregatedExpenses[3][1] = agregatedExpenses[3][1] + Expenses.find().fetch()[i].amount.number;
+        break;
+    case 'trips':
+        agregatedExpenses[4][1] = agregatedExpenses[4][1] + Expenses.find().fetch()[i].amount.number;
+        break;
+    case 'fuel':
+        agregatedExpenses[5][1] = agregatedExpenses[5][1] + Expenses.find().fetch()[i].amount.number;
+        break;
+    default:
+        //default code block
+    }
+  }
+  
+  return agregatedExpenses;
+}
+
+function aggregateExpensesByMonth() {
+  var agregatedExpenses = [];
+  
+  //Expenses.find({date: {$lt: new Date(2015,0,1)}}).fetch()
+  //Expenses.find({}, {sort: {date: 1}}).fetch()[2].merchant
+  return agregatedExpenses;
+}
+
