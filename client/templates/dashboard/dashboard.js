@@ -90,7 +90,7 @@ function builtArea() {
  * Function to draw the column chart
  */
 function builtColumn() {
-
+    var data = aggregateExpensesByMonth();
     $('#container-column').highcharts({
         
         chart: {
@@ -98,11 +98,7 @@ function builtColumn() {
         },
         
         title: {
-            text: 'Monthly Average Rainfall'
-        },
-        
-        subtitle: {
-            text: 'Source: WorldClimate.com'
+            text: 'Monthly Expenses'
         },
         
         credits: {
@@ -110,33 +106,20 @@ function builtColumn() {
         },
         
         xAxis: {
-            categories: [
-                'Jan',
-                'Feb',
-                'Mar',
-                'Apr',
-                'May',
-                'Jun',
-                'Jul',
-                'Aug',
-                'Sep',
-                'Oct',
-                'Nov',
-                'Dec'
-            ]
+          categories: data[1]
         },
         
         yAxis: {
             min: 0,
             title: {
-                text: 'Rainfall (mm)'
+                text: 'Need to define currency!'
             }
         },
         
         tooltip: {
             headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
             pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                '<td style="padding:0"><b>{point.y:.2f} currency TBD</b></td></tr>',
             footerFormat: '</table>',
             shared: true,
             useHTML: true
@@ -150,22 +133,10 @@ function builtColumn() {
         },
         
         series: [{
-            name: 'Tokyo',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-
-        }, {
-            name: 'New York',
-            data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
-
-        }, {
-            name: 'London',
-            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
-
-        }, {
-            name: 'Berlin',
-            data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
-
+          name: 'Accumulated expenses',
+          data: data[0]
         }]
+        
     });
 }
 
@@ -174,30 +145,8 @@ function builtColumn() {
  */
 function builtPie() {
     
-    // 'external' data
     var data = aggregateExpensesByCategory();
-    console.log(data);
-    /*
-    var data = new Array();
-  
-    data.push({
-        name: 'Level 0',
-        y: 10,
-        color: '#55BF3B'
-    });
-
-    data.push({
-        name: 'Level 1',
-        y: 12,
-        color: '#DDDF0D'
-    });
-
-    data.push({
-        name: 'Level 2',
-        y: 30,
-        color: '#DF5353'
-    });
-    */
+    
     $('#container-pie').highcharts({
         
         chart: {
@@ -256,60 +205,95 @@ Template.dashboard.helpers({
 });
 
 function capitalizeFirstLetter(string) {
-   return string.charAt(0).toUpperCase() + string.slice(1);
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
 function aggregateExpensesByCategory() {
+  var i, j;
   
+  // Find all different categories
   var nCategories = _.uniq(Expenses.find({}, {sort: {category: 1}, fields: {category: true}}).fetch().map(function(x) {return x.category;}), true);
   
+  // Initialise input array for chart
   var agregatedExpenses = [];
-  /*
-  for (var i = 0; i < nCategories.length; i++) {
+  for (i = 0; i < nCategories.length; i++) {
     agregatedExpenses.push([capitalizeFirstLetter(nCategories[i]), 0]);
-  }*/
-  console.log("nCategories: ", nCategories)
-  console.log("agregatedExpenses: ", agregatedExpenses)
+  }
   
-  agregatedExpenses.push(['Meals', 0]);
-  agregatedExpenses.push(['Breakfast', 0]);
-  agregatedExpenses.push(['Lunch', 0]);
-  agregatedExpenses.push(['Dinner', 0]);
-  agregatedExpenses.push(['Trips', 0]);
-  agregatedExpenses.push(['Fuel', 0]);
-    
-  for (i = 0; i < Expenses.find().count(); i++) {
-    switch(Expenses.find().fetch()[i].category) {
-    case 'meals':
-        agregatedExpenses[0][1] = agregatedExpenses[0][1] + Expenses.find().fetch()[i].amount.number;
-        break;
-    case 'breakfast':
-        agregatedExpenses[1][1] = agregatedExpenses[1][1] + Expenses.find().fetch()[i].amount.number;
-        break;
-    case 'lunch':
-        agregatedExpenses[2][1] = agregatedExpenses[2][1] + Expenses.find().fetch()[i].amount.number;
-        break;
-    case 'dinner':
-        agregatedExpenses[3][1] = agregatedExpenses[3][1] + Expenses.find().fetch()[i].amount.number;
-        break;
-    case 'trips':
-        agregatedExpenses[4][1] = agregatedExpenses[4][1] + Expenses.find().fetch()[i].amount.number;
-        break;
-    case 'fuel':
-        agregatedExpenses[5][1] = agregatedExpenses[5][1] + Expenses.find().fetch()[i].amount.number;
-        break;
-    default:
-        //default code block
+  // Sum all exprenses in each category
+  var subCollection;
+  for (i = 0; i < nCategories.length; i++) {
+    subCollection = Expenses.find({category: nCategories[i]}).fetch();
+    for (j = 0; j < subCollection.length; j++) {
+      agregatedExpenses[i][1] = agregatedExpenses[i][1] + subCollection[j].amount.number;
     }
   }
   
   return agregatedExpenses;
 }
 
+function generateDate(yearStart, monthStart, monthsFromStart) {
+  var month = (monthStart + monthsFromStart) % 11;
+  var year = yearStart + (monthStart + monthsFromStart - month) / 11 - 2000;
+  return [new Date(year, month, 1), numberToMonth(month)+" '"+year.toString()];
+}
+
+function numberToMonth(month) {
+  var monthName;
+  switch (month) {
+    case 0: monthName = 'Jan'; break;
+    case 1: monthName = 'Feb'; break;
+    case 2: monthName = 'Mar'; break;
+    case 3: monthName = 'Apr'; break;
+    case 4: monthName = 'May'; break;
+    case 5: monthName = 'Jun'; break;
+    case 6: monthName = 'Jul'; break;
+    case 7: monthName = 'Aug'; break;
+    case 8: monthName = 'Sep'; break;
+    case 9: monthName = 'Oct'; break;
+    case 10: monthName = 'Nov'; break;
+    case 11: monthName = 'Dec'; break;  
+  }
+  return monthName;
+}
+
 function aggregateExpensesByMonth() {
-  var agregatedExpenses = [];
   
-  //Expenses.find({date: {$lt: new Date(2015,0,1)}}).fetch()
-  //Expenses.find({}, {sort: {date: 1}}).fetch()[2].merchant
-  return agregatedExpenses;
+  var i, j;
+  
+  // Find sort by date (ascending order) and find oldest and newest receipt
+  var sortedExpenses = Expenses.find({}, {sort: {date: 1}}).fetch();
+  
+  // Find all different categories
+  var numberCategories = (sortedExpenses[sortedExpenses.length-1].date.getFullYear() - sortedExpenses[0].date.getFullYear())*12 + (sortedExpenses[sortedExpenses.length-1].date.getMonth() - sortedExpenses[0].date.getMonth()) + 1;
+  
+  var nCategories = [];
+  for (i = 0; i < numberCategories; i++) {
+    nCategories.push(generateDate(sortedExpenses[0].date.getFullYear(), sortedExpenses[0].date.getMonth(), i));
+  }
+   
+  // Initialise input arrays for chart
+  var agregatedExpenses = [];
+  var categoriesExpenses = [];
+  for (i = 0; i < numberCategories; i++) {
+    agregatedExpenses.push(0);
+    categoriesExpenses.push(nCategories[i][1]);
+  }
+  
+  // Sum all exprenses in each category
+  var subCollection;
+  for (i = 0; i < numberCategories - 1; i++) {
+    subCollection = Expenses.find({date: {$gte: nCategories[i][0], $lt: nCategories[i+1][0]}}).fetch();
+    for (j = 0; j < subCollection.length; j++) {
+      agregatedExpenses[i] = agregatedExpenses[i] + subCollection[j].amount.number;
+    }
+  }
+  // Latest month
+  subCollection = Expenses.find({date: {$gte: nCategories[numberCategories - 1][0], $lt: new Date()}}).fetch();
+  for (j = 0; j < subCollection.length; j++) {
+    agregatedExpenses[numberCategories - 1] = agregatedExpenses[numberCategories - 1] + subCollection[j].amount.number;
+  }
+  
+  return [agregatedExpenses, categoriesExpenses];
 }
 
