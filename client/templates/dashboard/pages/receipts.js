@@ -15,7 +15,33 @@ Template.receipts.helpers({
         { key: 'category', label: 'Category' },
         { key: 'location', label: 'Location' },
         { key: 'amount.number', label: 'Amount' },
-        { key: 'amount.currency', label: 'Currency' }
+        { key: 'amount.currency', label: 'Currency' },
+        { key: 'tax', label: 'Tax', hidden: true },
+        { key: 'merchant', label: 'Merchant', hidden: true },
+        { key: 'paymentMethod', label: 'Payment Method', hidden: true },
+        { key: 'image', label: 'Image', hidden: true },
+        { key: 'createdBy', label: 'Create By', hidden: true },
+        { key: 'createdAt', label: 'Created At', hidden: true }, 
+        
+        {
+          key: 'edit',
+          label: 'Edit',
+          cellClass: 'receipt-table-edit',
+          fn: function (object) {
+            return new Spacebars.SafeString('<a href="{{pathFor 'dashboard-editReceipts'}}">Edit</a>');
+          }
+          //<a href="{{pathFor 'dashboard-editReceipts'}}">Edit</a>
+          //<a href="+Routes.route['view'].path({_id:value})+">Edit</a>
+        }
+        
+        {
+          key: 'delete',
+          label: 'Delete',
+          cellClass: 'receipt-table-delete',
+          fn: function (object) {
+            return new Spacebars.SafeString('<a href=#>Delete</a>');
+          }
+        }
       ]
     };
   }
@@ -23,12 +49,29 @@ Template.receipts.helpers({
 
 Template.receipts.events = {
    'click #btnExportReceiptsCSV' : function () {
-     saveReceiptsFile('-Billi-My-receipts.csv');
+     saveReceiptsFile('-Billi-My-Expenses.csv');
    },
    
    'click #btnExportReceiptsTXT' : function () {
-     saveReceiptsFile('-Billi-My-receipts.txt')
-   }
+     saveReceiptsFile('-Billi-My-Expenses.txt')
+   },
+  
+    'click .reactive-table tr': function (e) {
+      e.preventDefault();
+      var receipt = this;
+      // checks if the actual clicked element has the class `receipt-table-edit`
+      if (e.target.className == "receipt-table-dekete") {
+        // asks for confirmation
+        if (confirm("Delete this receipt?")) {
+          Expenses.remove(receipt._id);
+          /*
+          var currentPostId = this._id;
+          Posts.remove(currentPostId);
+          Router.go('postsList');
+          */
+        }
+      }
+    }
  }
  
 saveReceiptsFile = function(name) {
