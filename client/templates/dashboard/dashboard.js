@@ -206,13 +206,13 @@ Template.dashboard.rendered = function() {
 Template.dashboard.helpers({
   Expenses: function () {
     return Expenses;
-  }
+  },
   
   'click div #start-date-pie-chart': function(e) {
     console.log("e: ", e);
     console.log("this: ", this);
     //startDatePieChart = a;
-  }
+  },
                 
   'click div #finish-date-pie-chart': function(e) {
     console.log("e: ", e);

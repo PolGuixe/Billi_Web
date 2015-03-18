@@ -10,7 +10,7 @@ Template.editReceipt.helpers({
     return Expenses.findOne({
       createdAt: date
     });
-  }
+  },
   
   field: function () {
     var allFields = UserSettings.findOne({

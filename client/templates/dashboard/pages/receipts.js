@@ -28,11 +28,11 @@ Template.receipts.helpers({
           label: 'Edit',
           cellClass: 'receipt-table-edit',
           fn: function (object) {
-            return new Spacebars.SafeString('<a href="{{pathFor 'dashboard-editReceipts'}}">Edit</a>');
+            return new Spacebars.SafeString('<a href="{{pathFor "dashboard-editReceipts"}}">Edit</a>');
           }
           //<a href="{{pathFor 'dashboard-editReceipts'}}">Edit</a>
           //<a href="+Routes.route['view'].path({_id:value})+">Edit</a>
-        }
+        },
         
         {
           key: 'delete',
