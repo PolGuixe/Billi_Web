@@ -39,18 +39,38 @@
             <div role="tabpanel" class="tab-pane" id="categories">
               <div class="row">
                   <div class="col-lg-12">
-                      {{> quickForm collection="UserSettings" doc=userId id="user-categories-edit" type="update" omitFields="importSettings,belongsTo"}}
+                      {{> quickForm collection="UserSettings" doc=userId id="user-categories-edit" type="update" omitFields="importSettings,exportSettings,belongsTo"}}
                   </div>
               </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="import">
               <div class="row">
                   <div class="col-lg-12">
-                      {{> quickForm collection="UserSettings" doc=userId id="user-import-edit" type="update" omitFields="expenseCategories,belongsTo"}}
+                      {{> quickForm collection="UserSettings" doc=userId id="user-import-edit" type="update" omitFields="expenseCategories,exportSettings,belongsTo"}}
                   </div>
               </div>
             </div>
-            <div role="tabpanel" class="tab-pane" id="export">...</div>
+            <div role="tabpanel" class="tab-pane" id="export">
+              <div class="row">
+                  <div class="col-lg-12">
+                    <!--  
+                    {{> quickForm collection="UserSettings" doc=userId id="user-export-edit" type="update" omitFields="expenseCategories,importSettings,belongsTo"}}
+                    -->
+                    
+                      {{#autoForm collection="UserSettings" doc=userId id="user-export-edit" type="update" omitFields="expenseCategories,importSettings,belongsTo"}}
+
+                        {{#each field}}
+                          {{> afQuickField name=this}}
+                        {{/each}}
+
+                      <div class="padding">
+                        <button type="submit" class="button button-positive button-block">Save Changes</button>
+                      </div>
+                    {{/autoForm}}
+                    
+                  </div>
+              </div>
+            </div>
           </div>
 
         </div>

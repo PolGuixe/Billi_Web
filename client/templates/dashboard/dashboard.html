@@ -167,7 +167,19 @@
                 <div id="container-column"></div>
                 <a href="#" class="btn btn-default btn-block">View Details - To Be Updated</a>
               </div>
-              <!-- /.col-lg-8 (nested) -->
+              <!-- /.col-lg-12 (nested) -->
+              <div class="col-lg-12">
+                <p>Select start date:</p>
+                <div id="start-date-column-chart">
+                  {{> datepicker}}
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <p>Select finish date:</p>
+                <div id="finish-date-column-chart">
+                  {{> datepicker}}
+                </div>
+              </div>
             </div>
             <!-- /.row -->
           </div>
@@ -241,8 +253,26 @@
             <i class="fa fa-pie-chart fa-fw"></i> Your expenses by category
           </div>
           <div class="panel-body">
-            <div id="container-pie"></div>
-            <a href="#" class="btn btn-default btn-block">View Details - To Be Updated</a>
+            <div class="row">
+              <div class="col-lg-12">
+                <div id="container-pie"></div>
+                <a href="#" class="btn btn-default btn-block">View Details - To Be Updated</a>
+              </div>
+              <!-- /.col-lg-12 (nested) -->
+              <div class="col-lg-12">
+                <p>Select start date:</p>
+                <div id="start-date-pie-chart">
+                  {{> datepicker}}
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <p>Select finish date:</p>
+                <div id="finish-date-pie-chart">
+                  {{> datepicker}}
+                </div>
+              </div>
+            </div>
+            <!-- /.row -->
           </div>
           <!-- /.panel-body -->
         </div>

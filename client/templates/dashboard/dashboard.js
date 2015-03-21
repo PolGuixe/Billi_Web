@@ -1,3 +1,8 @@
+var startDatePieChart = new Date(2015, 0, 1); // 1st Jan 2015
+var finishDatePieChart = new Date();
+var startDateColumnChart = new Date(2015, 0, 1); // 1st Jan 2015
+var finishDateColumnChart = new Date();
+
 // https://github.com/jhuenges/highcharts-demo/tree/master/client/demos
 
 /*
@@ -145,7 +150,7 @@ function builtColumn() {
  */
 function builtPie() {
     
-    var data = aggregateExpensesByCategory();
+    var data = aggregateExpensesByCategory(startDatePieChart, finishDatePieChart);
     
     $('#container-pie').highcharts({
         
@@ -201,18 +206,57 @@ Template.dashboard.rendered = function() {
 Template.dashboard.helpers({
   Expenses: function () {
     return Expenses;
-  }
+  },
+  
+  'click div #start-date-pie-chart': function(e) {
+    console.log("e: ", e);
+    console.log("this: ", this);
+    //startDatePieChart = a;
+  },
+                
+  'click div #finish-date-pie-chart': function(e) {
+    console.log("e: ", e);
+    console.log("this: ", this);
+    //startDatePieChart = a;
+  }                         
+                           
 });
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+/*
 function aggregateExpensesByCategory() {
   var i, j;
   
   // Find all different categories
   var nCategories = _.uniq(Expenses.find({}, {sort: {category: 1}, fields: {category: true}}).fetch().map(function(x) {return x.category;}), true);
+  
+  // Initialise input array for chart
+  var agregatedExpenses = [];
+  for (i = 0; i < nCategories.length; i++) {
+    agregatedExpenses.push([capitalizeFirstLetter(nCategories[i]), 0]);
+  }
+  
+  // Sum all exprenses in each category
+  var subCollection;
+  for (i = 0; i < nCategories.length; i++) {
+    subCollection = Expenses.find({category: nCategories[i]}).fetch();
+    for (j = 0; j < subCollection.length; j++) {
+      agregatedExpenses[i][1] = agregatedExpenses[i][1] + subCollection[j].amount.number;
+    }
+  }
+  
+  return agregatedExpenses;
+}
+*/
+
+function aggregateExpensesByCategory(startDate, finishDate) {
+  var i, j;
+  
+  // Find all different categories
+  var nCategories = _.uniq(Expenses.find({date: {$gte: startDate, $lte: finishDate}}, {sort: {category: 1}, fields: {category: true}}).fetch().map(function(x) {return x.category;}), true);
   
   // Initialise input array for chart
   var agregatedExpenses = [];
