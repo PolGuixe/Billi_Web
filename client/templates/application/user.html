@@ -1,0 +1,7 @@
+<template name="user">
+  {{#if currentUser}}
+   <a href="{{pathFor 'dashboard-settings'}}">{{username}}</a> 
+  {{else}}
+    <a href="{{pathFor 'signIn'}}">Sign In</a>
+  {{/if}} 
+</template>
