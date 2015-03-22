@@ -1,7 +1,6 @@
-<template name="layout">
-  <header>
-    {{> yield region='header'}}
-  </header>
+<template name="dashboardLayout">
+  
+  {{> dashboardNav}}
 
   <aside>
     {{> yield region='aside'}}
@@ -12,6 +11,6 @@
   </div>
 
   <footer>
-    {{> yield region='footer'}}
+    {{>footer}}
   </footer>
 </template>
