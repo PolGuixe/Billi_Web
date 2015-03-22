@@ -32,32 +32,34 @@
               -->
               <div class="row">
                   <div class="col-lg-12">
-                    {{> quickForm collection="Meteor.users" doc=user id="user-profile-edit" type="update" omitFields="emails,createdAt,services"}}
+                     {{> quickForm collection="Meteor.users" doc=user id="user-profile-edit" type="update" omitFields="emails,createdAt,services"}}  
                   </div>
               </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="categories">
               <div class="row">
                   <div class="col-lg-12">
-                      {{> quickForm collection="UserSettings" doc=userId id="user-categories-edit" type="update" omitFields="importSettings,exportSettings,belongsTo"}}
+                      <!--{{> quickForm collection="UserSettings" doc=userId id="user-categories-edit" type="update" omitFields="importSettings,exportSettings,belongsTo"}}-->
+                      {{> quickForm collection="UserSettings" doc=userId id="user-categories-edit" type="update" omitFields="importSettings,belongsTo"}}
                   </div>
               </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="import">
               <div class="row">
                   <div class="col-lg-12">
-                      {{> quickForm collection="UserSettings" doc=userId id="user-import-edit" type="update" omitFields="expenseCategories,exportSettings,belongsTo"}}
+                      <!--{{> quickForm collection="UserSettings" doc=userId id="user-import-edit" type="update" omitFields="expenseCategories,exportSettings,belongsTo"}}-->
+                      {{> quickForm collection="UserSettings" doc=userId id="user-import-edit" type="update" omitFields="expenseCategories,belongsTo"}}
                   </div>
               </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="export">
               <div class="row">
-                  <div class="col-lg-12">
+                  <div class="col-lg-12">...
                     <!--  
                     {{> quickForm collection="UserSettings" doc=userId id="user-export-edit" type="update" omitFields="expenseCategories,importSettings,belongsTo"}}
                     -->
                     
-                      {{#autoForm collection="UserSettings" doc=userId id="user-export-edit" type="update" omitFields="expenseCategories,importSettings,belongsTo"}}
+                      <!--{{#autoForm collection="UserSettings" doc=userId id="user-export-edit" type="update" omitFields="expenseCategories,importSettings,belongsTo"}}
 
                         {{#each field}}
                           {{> afQuickField name=this}}
@@ -67,7 +69,7 @@
                         <button type="submit" class="button button-positive button-block">Save Changes</button>
                       </div>
                     {{/autoForm}}
-                    
+                    -->
                   </div>
               </div>
             </div>

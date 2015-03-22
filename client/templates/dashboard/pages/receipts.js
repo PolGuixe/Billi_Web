@@ -23,7 +23,7 @@ Template.receipts.helpers({
         { key: 'createdBy', label: 'Create By', hidden: true },
         { key: 'createdAt', label: 'Created At', hidden: true }, 
         
-        {
+        /*{
           key: 'edit',
           label: 'Edit',
           cellClass: 'receipt-table-edit',
@@ -32,7 +32,7 @@ Template.receipts.helpers({
           }
           //<a href="{{pathFor 'dashboard-editReceipts'}}">Edit</a>
           //<a href="+Routes.route['view'].path({_id:value})+">Edit</a>
-        },
+        },*/
         
         {
           key: 'delete',
