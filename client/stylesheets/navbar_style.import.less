@@ -1,0 +1,92 @@
+.navbar-default {
+  border-color: transparent;
+  background-color: @brand-primary;
+  opacity: 0.95;
+}
+
+.navbar-default .navbar-brand {
+  font-family: 'Source Sans Pro', cursive;
+  color: @brand-secondary;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus,
+.navbar-default .navbar-brand:active,
+.navbar-default .navbar-brand.active {
+  color: @brand-highlight;
+}
+
+.navbar-default .navbar-toggle {
+  border: none;
+  border-radius: 0px;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: @brand-secondary;
+}
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: @brand-secondary;
+  .icon-bar {
+    background-color: @brand-active;
+  }
+}
+
+.navbar-default .nav li a {
+  text-transform: uppercase;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: @brand-secondary;
+}
+
+.navbar-default .nav li a:hover,
+.navbar-default .nav li a:focus {
+  outline: 0;
+  background-color: @brand-highlight;
+  color: @brand-active;
+  border-bottom: 4px solid @brand-highlight;
+  margin-bottom: -4px;
+}
+
+.navbar-default .navbar-nav>.active>a {
+  border-radius: 0;
+  background-color: @brand-highlight;
+  color: @brand-active;
+}
+
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+  color: @brand-secondary;
+  background-color: @brand-primary;
+}
+
+@media(min-width:768px) {
+  .navbar-default {
+    /* padding: 25px 0; Removed by Laura */
+    
+    border: 0;
+    /* background-color: transparent; Removed by Laura */
+    
+    -webkit-transition: padding .3s;
+    -moz-transition: padding .3s;
+    transition: padding .3s;
+  }
+  .navbar-default .navbar-brand {
+    font-size: 2em;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
+  }
+  .navbar-default .navbar-nav>.active>a {
+    border-radius: 3px;
+  }
+  .navbar-default.navbar-shrink {
+    padding: 10px 0;
+    background-color: #222;
+  }
+  .navbar-default.navbar-shrink .navbar-brand {
+    font-size: 1.5em;
+  }
+}
