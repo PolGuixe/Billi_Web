@@ -60,6 +60,7 @@ h6 {
     background-color: @brand-background-2;
 }
 
+//Buttons
 .btn-primary {
   .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
   .heading-font;
@@ -73,6 +74,8 @@ h6 {
   font-size: 18px;
   padding: 20px 40px;
 }
+
+
 
 // Social Buttons
 
@@ -101,6 +104,36 @@ ul.social-buttons {
   }
 }
 
+// Circle Buttons 
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.428571429;
+}
+
+.btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    border-radius: 25px;
+    font-size: 18px;
+    line-height: 1.33;
+}
+
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 24px;
+    line-height: 1.33;
+}
+
 
 // Wrappers
 
@@ -117,7 +150,7 @@ ul.social-buttons {
 @media(min-width:768px) {
     #page-wrapper {
         position: inherit;
-        margin: 0 0 0 250px;
+        margin: 0 0 0 @sidebar-width;
         padding: 0 30px;
         border-left: 1px solid darken(@gray-lighter, 6.5%);
     }
