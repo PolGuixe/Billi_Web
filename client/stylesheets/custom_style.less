@@ -1,7 +1,10 @@
 @import url(//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700);
 @import url(//fonts.googleapis.com/css?family=Lato:700italic);
+@import "bootstrap/custom.bootstrap.less";
+
+//Color Definition
 @brand-white: #FFFFFF;
-@brand-grey: #414141;
+@brand-grey: #777;
 @brand-light-light-blue: #B4FEFF;
 @brand-light-blue: #41E3FE;
 @brand-blue: #05C5F2;
@@ -9,6 +12,7 @@
 @brand-dark-dark-blue: #17a2e8;
 @brand-dark-transparency: rgba(64, 64, 64, 0.75);
 
+//Color Assigment
 @brand-primary: @brand-blue;
 @brand-secondary: @brand-white;
 @brand-highlight: @brand-light-blue;
@@ -17,10 +21,26 @@
 @brand-background-1: @brand-white;
 @brand-background-2: @brand-light-light-blue;
 
+//Fonts
+@font-family: 'Source Sans Pro', @font-family-sans-serif;
+@font-family-secondary: 'Lato', @font-family-sans-serif;
+@font-family-base: @font-family;
 
-@import "/client/stylesheets/general_style.import.less";
-@import "/client/stylesheets/navbar_style.import.less";
-@import "/client/stylesheets/header_style.import.less";
-@import "/client/stylesheets/section_style.import.less";
-@import "/client/stylesheets/other_style.import.less";
+//Radius
+@border-radius-base: 0px;
+@border-radius-large: 0px;
+@border-radius-small: 0px;
 
+//Other basics
+@navbar-height: 50px;
+@footer-height: 70px;
+
+//Custom Style Imports
+@import "custom.mixins.import.less";
+@import "general_style.import.less";
+@import "navbar_style.import.less";
+@import "sidebar_style.import.less";
+@import "header_style.import.less";
+@import "section_style.import.less";
+@import "timeline_style.import.less";
+@import "footer_style.import.less";
