@@ -1,92 +1,97 @@
+//NavBar
+// @navbar-default-color: @brand-secondary;
+// @navbar-default-bg: @brand-primary;
+// @navbar-default-border: transparent;
+// @navbar-default-link-color: @brand-secondary;
+// @navbar-default-link-hover-color: @brand-secondary;
+// @navbar-default-link-hover-bg: @brand-primary;
+// @navbar-default-link-active-color: @brand-active;
+// @navbar-default-link-active-bg: @brand-highlight;
+// @navbar-default-brand-color: @navbar-default-link-color;
+// @navbar-default-brand-hover-color: @navbar-default-link-hover-color;
+// @navbar-default-toggle-hover-bg: @brand-primary;
+// @navbar-default-toggle-icon-bar-bg: @brand-secondary;
+// @navbar-default-toggle-border-color: transparent;
 .navbar-default {
-  border-color: transparent;
-  background-color: @brand-primary;
-  opacity: 0.95;
-}
-
-.navbar-default .navbar-brand {
-  font-family: 'Source Sans Pro', cursive;
-  color: @brand-secondary;
-}
-
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus,
-.navbar-default .navbar-brand:active,
-.navbar-default .navbar-brand.active {
-  color: @brand-highlight;
-}
-
-.navbar-default .navbar-toggle {
-  border: none;
-  border-radius: 0px;
-}
-
-.navbar-default .navbar-toggle .icon-bar {
-  background-color: @brand-secondary;
-}
-
-.navbar-default .navbar-toggle:hover,
-.navbar-default .navbar-toggle:focus {
-  background-color: @brand-secondary;
-  .icon-bar {
-    background-color: @brand-active;
-  }
-}
-
-.navbar-default .nav li a {
-  text-transform: uppercase;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 400;
-  letter-spacing: 1px;
-  color: @brand-secondary;
-}
-
-.navbar-default .nav li a:hover,
-.navbar-default .nav li a:focus {
-  outline: 0;
-  background-color: @brand-highlight;
-  color: @brand-active;
-  border-bottom: 4px solid @brand-highlight;
-  margin-bottom: -4px;
-}
-
-.navbar-default .navbar-nav>.active>a {
-  border-radius: 0;
-  background-color: @brand-highlight;
-  color: @brand-active;
-}
-
-.navbar-default .navbar-nav>.active>a:hover,
-.navbar-default .navbar-nav>.active>a:focus {
-  color: @brand-secondary;
-  background-color: @brand-primary;
+    opacity: 0.95;
+    background-color: @brand-primary;
+    color: @brand-secondary;
+    border-color: transparent;
+    .navbar-brand {
+        color: @brand-secondary;
+        .script-font;
+        &:hover, &:focus, &:active, &.active {
+            color: @brand-highlight;
+        }
+    }
+    .navbar-collapse {
+        border-color: fade(white, 2%);
+    }
+    .navbar-toggle {
+        background-color: @brand-primary;
+        border-color: transparent;
+        .icon-bar {
+            background-color: @brand-secondary;
+        }
+        &:hover,
+        &:focus {
+            background-color: @brand-secondary;
+            .icon-bar {
+                background-color: @brand-active;
+            }
+        }
+    }
+    .nav {
+        li {
+            a {
+                .heading-font;
+                font-weight: 400;
+                letter-spacing: 1px;
+                color: @brand-secondary;
+                &:hover {
+                    color: @brand-active;
+                    background-color: @brand-highlight;
+                    outline: none;
+                    border-bottom: 4px solid @brand-highlight;
+                    margin-bottom: -4px;
+                }
+                &:focus {
+                    color: @brand-secondary;
+                }
+            }
+        }
+    }
+    .navbar-nav>.active>a {
+        color: @brand-active;
+        background-color: @brand-highlight;
+        border-bottom: 4px solid @brand-highlight;
+        margin-bottom: -4px;
+    }
+    .navbar-nav>.active>a:hover,
+    .navbar-nav>.active>a:focus {
+        color: @brand-secondary;
+        background-color: @brand-highlight;
+    }
 }
 
 @media(min-width:768px) {
-  .navbar-default {
-    /* padding: 25px 0; Removed by Laura */
-    
-    border: 0;
-    /* background-color: transparent; Removed by Laura */
-    
-    -webkit-transition: padding .3s;
-    -moz-transition: padding .3s;
-    transition: padding .3s;
-  }
-  .navbar-default .navbar-brand {
-    font-size: 2em;
-    -webkit-transition: all .3s;
-    -moz-transition: all .3s;
-    transition: all .3s;
-  }
-  .navbar-default .navbar-nav>.active>a {
-    border-radius: 3px;
-  }
-  .navbar-default.navbar-shrink {
-    padding: 10px 0;
-    background-color: #222;
-  }
-  .navbar-default.navbar-shrink .navbar-brand {
-    font-size: 1.5em;
-  }
+    .navbar-default {
+        -webkit-transition: padding 0.3s;
+        -moz-transition: padding 0.3s;
+        transition: padding 0.3s;
+        border: none;
+        .navbar-brand {
+            font-size: 2em;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+    }
+    .navbar-default.navbar-shrink {
+        background-color: @brand-secondary;
+        padding: 10px 0;
+        .navbar-brand {
+            font-size: 1.5em;
+        }
+    }
 }

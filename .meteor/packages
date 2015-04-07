@@ -6,7 +6,6 @@
 
 meteor-platform
 insecure
-twbs:bootstrap
 iron:router
 jquery
 fortawesome:fontawesome
@@ -25,3 +24,4 @@ momentjs:moment
 aslagle:reactive-table
 polguixe:billi
 less
+nemo64:bootstrap

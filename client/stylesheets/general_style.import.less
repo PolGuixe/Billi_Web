@@ -1,49 +1,41 @@
+@body-bg: @brand-white;
+@font-size-base: 14px;
+@headings-font-family: @font-family-base;
+@headings-font-weight: 700;
+@text-muted: @brand-grey;
+@link-color: @brand-primary;
+@link-hover-color: @brand-highlight;
+@link-hover-decoration: none;
+@btn-primary-color: @brand-secondary;
+@btn-primary-bg: @brand-primary;
+@btn-primary-border: @brand-primary;
+
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  font-family: 'Source Sans Pro', sans-serif;
-  padding-top: 50px; /* Padding top by nav-bar height */
-  margin-bottom: 90px; /* Margin bottom by footer height */
-  overflow-x: hidden;
-}
-
-.text-muted {
-  color: #777;
+    padding-top: @navbar-height;
+    /* Padding top by nav-bar height */
+    
+    margin-bottom: @footer-height;
+    /* Margin bottom by footer height */
+    
+    overflow-x: hidden;
 }
 
 .text-primary {
-  color: @brand-primary;
+    color: @brand-primary;
 }
 
-p {
-  font-size: 14px;
-  line-height: 1.75;
-}
+// p {
+//   font-size: 14px;
+//   line-height: 1.75;
+// }
 
 p.large {
-  font-size: 16px;
-}
-
-a,
-a:hover,
-a:focus,
-a:active,
-a.active {
-  outline: 0;
-}
-
-a {
-  color: @brand-primary;
-}
-
-a:hover,
-a:focus,
-a:active,
-a.active {
-  color: @brand-highlight;
+    font-size: 16px;
 }
 
 h1,
@@ -52,121 +44,114 @@ h3,
 h4,
 h5,
 h6 {
-  text-transform: uppercase;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 700;
+    .heading-font;
+    font-weight: 700;
 }
 
 .img-centered {
-  margin: 0 auto;
+    margin: 0 auto;
 }
 
 .bg-1 {
-  background-color: @brand-background-1;
+    background-color: @brand-background-1;
 }
 
 .bg-2 {
-  background-color: @brand-background-2;
+    background-color: @brand-background-2;
 }
 
+//Buttons
 .btn-primary {
-  border-color: @brand-primary;
-  border-radius: 0px;
-  text-transform: uppercase;
-  font-family: 'Source Sans Pro', sans-serif;
+  .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+  .heading-font;
   font-weight: 700;
-  color: @brand-secondary;
-  background-color: @brand-primary;
-}
-
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active,
-.btn-primary.active,
-.open .dropdown-toggle.btn-primary {
-  border-color: @brand-border;
-  color: @brand-secondary;
-  background-color: @brand-active;
-}
-
-.btn-primary:active,
-.btn-primary.active,
-.open .dropdown-toggle.btn-primary {
-  background-image: none;
-}
-
-.btn-primary.disabled,
-.btn-primary[disabled],
-fieldset[disabled] .btn-primary,
-.btn-primary.disabled:hover,
-.btn-primary[disabled]:hover,
-fieldset[disabled] .btn-primary:hover,
-.btn-primary.disabled:focus,
-.btn-primary[disabled]:focus,
-fieldset[disabled] .btn-primary:focus,
-.btn-primary.disabled:active,
-.btn-primary[disabled]:active,
-fieldset[disabled] .btn-primary:active,
-.btn-primary.disabled.active,
-.btn-primary[disabled].active,
-fieldset[disabled] .btn-primary.active {
-  border-color: @brand-border;
-  background-color: @brand-border;
-}
-
-.btn-primary .badge {
-  color: @brand-primary;
-  background-color: @brand-secondary;
 }
 
 .btn-xl {
-  padding: 20px 40px;
-  border-color: @brand-primary;
-  border-radius: 0px;
-  text-transform: uppercase;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 18px;
+  .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+  .heading-font;
   font-weight: 700;
-  color: @brand-secondary;
-  background-color: @brand-primary;
+  font-size: 18px;
+  padding: 20px 40px;
 }
 
-.btn-xl:hover,
-.btn-xl:focus,
-.btn-xl:active,
-.btn-xl.active,
-.open .dropdown-toggle.btn-xl {
-  border-color: @brand-border;
-  color: @brand-secondary;
-  background-color: @brand-active;
+
+
+// Social Buttons
+
+ul.social-buttons {
+  margin-bottom: 0;
+  li {
+    a {
+      display: block;
+      background-color: @brand-grey;
+      height: 40px;
+      width: 40px;
+      border-radius: 100%;
+      font-size: 20px;
+      line-height: 40px;
+      color: @brand-secondary;
+      outline: none;
+          -webkit-transition: all 0.3s;
+          -moz-transition: all 0.3s;
+          transition: all 0.3s;
+          &:hover,
+          &:focus,
+          &:active {
+        background-color: @brand-primary;
+          }
+    }
+  }
 }
 
-.btn-xl:active,
-.btn-xl.active,
-.open .dropdown-toggle.btn-xl {
-  background-image: none;
+// Circle Buttons 
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.428571429;
 }
 
-.btn-xl.disabled,
-.btn-xl[disabled],
-fieldset[disabled] .btn-xl,
-.btn-xl.disabled:hover,
-.btn-xl[disabled]:hover,
-fieldset[disabled] .btn-xl:hover,
-.btn-xl.disabled:focus,
-.btn-xl[disabled]:focus,
-fieldset[disabled] .btn-xl:focus,
-.btn-xl.disabled:active,
-.btn-xl[disabled]:active,
-fieldset[disabled] .btn-xl:active,
-.btn-xl.disabled.active,
-.btn-xl[disabled].active,
-fieldset[disabled] .btn-xl.active {
-  border-color: @brand-border;
-  background-color: @brand-active;
+.btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    border-radius: 25px;
+    font-size: 18px;
+    line-height: 1.33;
 }
 
-.btn-xl .badge {
-  color: @brand-primary;
-  background-color: @brand-secondary;
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 24px;
+    line-height: 1.33;
+}
+
+
+// Wrappers
+
+#wrapper {
+    width: 100%;
+}
+
+#page-wrapper {
+    padding: 0 15px;
+    min-height: 568px;
+    background-color: white;
+}
+
+@media(min-width:768px) {
+    #page-wrapper {
+        position: inherit;
+        margin: 0 0 0 @sidebar-width;
+        padding: 0 30px;
+        border-left: 1px solid darken(@gray-lighter, 6.5%);
+    }
 }

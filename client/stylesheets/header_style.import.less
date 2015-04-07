@@ -1,60 +1,51 @@
 header {
-  text-align: center;
-  color: #fff;
-  background-color: #aaa;
-//  background: url(/images/landing_page/header.svg) no-repeat top left;
-//  background-size: contain;
-  /* Added by Laura */
-  
-  background-attachment: scroll;
-  background-attachment: scroll;
   background-image: url(/images/landing_page/header.svg);
-  background-position: center;
   background-repeat: none;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
+  background-attachment: scroll;
+  background-position: center center;
+  .background-cover;
+  text-align: center;
+  color: @brand-secondary;
+  .intro-text {
+    padding-top: 100px;
+    padding-bottom: 50px;
+    .intro-lead-in {
+      .highlight-font;
+      font-style: italic;
+      font-size: 22px;
+      line-height: 22px;
+      margin-bottom: 25px;
+    }
+    .intro-heading {
+      .heading-font;
+      font-weight: 700;
+      font-size: 50px;
+      line-height: 50px;
+      margin-bottom: 25px;
+    }
+  }
 }
 
-header .intro-text {
-  padding-top: 100px;
-  padding-bottom: 50px;
-}
-
-header .intro-text .intro-lead-in {
-  margin-bottom: 25px;
-  font-family: 'Lato', sans-serif;
-  font-size: 16px;
-  font-style: italic;
-  line-height: 18px;
-}
-
-header .intro-text .intro-heading {
-  margin-bottom: 25px;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 30px;
-  font-weight: 700;
-  line-height: 35px;
-}
 
 @media(min-width:768px) {
-  header .intro-text {
-    padding-top: 150px;
-    padding-bottom: 75px;
-  }
-  header .intro-text .intro-lead-in {
-    margin-bottom: 25px;
-    font-family: 'Lato', sans-serif;
-    font-size: 20px;
-    font-style: italic;
-    line-height: 30px;
-  }
-  header .intro-text .intro-heading {
-    margin-bottom: 50px;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 38px;
-    font-weight: 700;
-    line-height: 50px;
+  header {
+    .intro-text {
+      padding-top: 150px;
+      padding-bottom: 75px;
+      .intro-lead-in {
+        .highlight-font;
+        font-style: italic;
+        font-size: 25px;
+        line-height: 30px;
+        margin-bottom: 25px;
+      }
+      .intro-heading {
+        .heading-font;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 40px;
+        margin-bottom: 50px;
+      }
+    }
   }
 }
