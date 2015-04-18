@@ -1,9 +1,7 @@
 <template name="dashboardNav">
-  
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <!-- Sidebar -->
+    <nav class="navbar navbar-default navbar-static-top dashboard-navbar" role="navigation" style="">
         <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -13,21 +11,45 @@
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">Billi</a>
             </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    {{> user}}
+                </li>
+            </ul>
+        </div>
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="sidebar-search">
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="Search...">
+                            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+                        </div>
+                        <!-- /input-group -->
                     </li>
                     <li>
-                      {{> user}}
+                        <a href="{{pathFor 'dashboard'}}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="{{pathFor 'receipts'}}"><i class="fa fa-database fa-fw"></i> Receipts</a>
+                    </li>
+                    <li>
+                        <a href="{{pathFor 'reports'}}"><i class="fa fa-file-text-o fa-fw"></i> Reports</a>
+                    </li>
+                    <li>
+                        <a href="{{pathFor 'statistics'}}"><i class="fa fa-bar-chart-o fa-fw"></i> Statistics</a>
+                    </li>
+                    <li>
+                        <a href="{{pathFor 'settings'}}"><i class="fa fa-gear fa-fw"></i> Settings</a>
                     </li>
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
+            <!-- /.sidebar-collapse -->
         </div>
-        <!-- /.container-fluid -->
+        <!-- /.navbar-static-side -->
     </nav>
-
 </template>
