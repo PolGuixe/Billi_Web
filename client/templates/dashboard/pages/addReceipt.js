@@ -21,7 +21,7 @@ Template.addReceipt.helpers({
     allCategories = allCategories.expenseCategories;
 
     var trueCategories = [];
-
+    console.log(trueCategories);
     _.each(allCategories, function (values, keys) {
       if (values)
         trueCategories.push({

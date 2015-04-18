@@ -23,16 +23,18 @@ Template.receipts.helpers({
         { key: 'createdBy', label: 'Create By', hidden: true },
         { key: 'createdAt', label: 'Created At', hidden: true }, 
         
-        /*{
+        {
           key: 'edit',
           label: 'Edit',
           cellClass: 'receipt-table-edit',
           fn: function (object) {
-            return new Spacebars.SafeString('<a href="{{pathFor "dashboard-editReceipts"}}">Edit</a>');
+            return new Spacebars.SafeString('<a href="{{pathFor "editReceipt"}}">Edit</a>');
           }
-          //<a href="{{pathFor 'dashboard-editReceipts'}}">Edit</a>
+          
+          //
+          //<a href="{{pathFor 'editReceipt'}}">Edit</a>
           //<a href="+Routes.route['view'].path({_id:value})+">Edit</a>
-        },*/
+        },
         
         {
           key: 'delete',
@@ -58,17 +60,13 @@ Template.receipts.events = {
   
     'click .reactive-table tr': function (e) {
       e.preventDefault();
+      
       var receipt = this;
-      // checks if the actual clicked element has the class `receipt-table-edit`
-      if (e.target.className == "receipt-table-dekete") {
+      // checks if the actual clicked element has the class 'receipt-table-edit'
+      if (e.target.parentElement.className == "receipt-table-delete") {
         // asks for confirmation
         if (confirm("Delete this receipt?")) {
           Expenses.remove(receipt._id);
-          /*
-          var currentPostId = this._id;
-          Posts.remove(currentPostId);
-          Router.go('postsList');
-          */
         }
       }
     }

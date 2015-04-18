@@ -308,8 +308,10 @@ function aggregateExpensesByMonth() {
   // Find sort by date (ascending order) and find oldest and newest receipt
   var sortedExpenses = Expenses.find({}, {sort: {date: 1}}).fetch();
   
+  console.log("sortedExpenses: ", sortedExpenses);
   // Find all different categories
   var numberCategories = (sortedExpenses[sortedExpenses.length-1].date.getFullYear() - sortedExpenses[0].date.getFullYear())*12 + (sortedExpenses[sortedExpenses.length-1].date.getMonth() - sortedExpenses[0].date.getMonth()) + 1;
+  console.log("numberCategories: ", numberCategories);
   
   var nCategories = [];
   for (i = 0; i < numberCategories; i++) {
