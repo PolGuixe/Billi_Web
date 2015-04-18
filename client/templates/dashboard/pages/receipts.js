@@ -74,6 +74,8 @@ Template.receipts.events = {
     }
  }
  
+
+ //This needs some sort of wrapper.
 saveReceiptsFile = function(name) {
   // Data array - to change
   var data = [["Date", "Location", "Category", "Amount", "Currency"]];
