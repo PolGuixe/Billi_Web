@@ -6,10 +6,9 @@ Template.editReceipt.helpers({
     });
   }
   */
-  receiptId: function(date) {
-    return Expenses.findOne({
-      createdAt: date
-    });
+  receipt: function() {
+    console.log("this: ", this);
+    return this;
   },
   
   field: function () {
